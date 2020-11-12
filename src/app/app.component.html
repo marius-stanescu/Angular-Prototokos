@@ -1,5 +1,7 @@
 <mat-toolbar>
   <span>{{ title }}</span>
+  <span class="spacer"></span>
+  <mat-icon matBadge="{{cart.count}}" matBadgeColor="accent">shopping_cart</mat-icon>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

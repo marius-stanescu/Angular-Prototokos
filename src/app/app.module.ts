@@ -10,10 +10,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductComponent } from './product/product.component';
+import { Cart } from './model/cart';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,10 @@ import { ProductComponent } from './product/product.component';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule
   ],
-  providers: [],
+  providers: [Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

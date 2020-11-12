@@ -16,11 +16,18 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get canDecreaseQuantity(): boolean {
+    return this.quantity !== 1;
+  }
+
   increaseQuantity() {
     this.quantity++;
   }
 
   decreaseQuantity() {
+    if (this.quantity === 1) {
+      return;
+    }
     this.quantity--;
   }
 }

@@ -9,7 +9,7 @@
         <mat-grid-list cols="2" rowHeight="50">
             <mat-grid-tile>{{product.price}}€</mat-grid-tile>
             <mat-grid-tile>
-                <button mat-icon-button aria-label="Decrease quantity" (click)="decreaseQuantity()">
+                <button mat-icon-button aria-label="Decrease quantity" (click)="decreaseQuantity()" [disabled]="!canDecreaseQuantity">
                     <mat-icon>remove</mat-icon>
                   </button>
                   <span class="quantity">{{quantity}}</span>

@@ -1,3 +1,10 @@
 .spacer {
     flex: 1 1 auto;
 }
+
+.menu-link {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}

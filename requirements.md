@@ -8,7 +8,7 @@
 []  Use template forms for login / register UI's
 []  On both dashboard and cart pages a logout icon must be present. When clicked must clear the currentUser prop from localStorage and redirect to login.
 []  Dashboard and Cart pages must be in a seperate module that is lazily loaded by the angular router when the route its accesed.
-[]  Create a dashboard service that tracks the cart information on the current session. 
+[x]  Create a dashboard service that tracks the cart information on the current session. 
 
 
 ### Login
@@ -32,7 +32,7 @@ Requirments:
 [x]  Each product displays name, description, price and a + and - icon. 
 []  The cart information is saved into localStorage every time a change is made.
 [x]  There must be a cart icon present somewhere on top of the dashboard page that displays the number of items in the cart.
-[]  When the cart icon is clicked it redirects to the cart page. 
+[x]  When the cart icon is clicked it redirects to the cart page. 
 
 ### Cart
 []  Display the existing products in a readonly manner (reuse the component from the dashboard product display, without the + and - ).

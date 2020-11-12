@@ -16,12 +16,14 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductComponent } from './product/product.component';
 import { Cart } from './model/cart';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ProductComponent
+    ProductComponent,
+    CartDetailsComponent
   ],
   imports: [
     CommonModule,

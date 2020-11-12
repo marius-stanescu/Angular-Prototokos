@@ -11,7 +11,8 @@ import { Product } from '../model/product';
 export class ProductComponent implements OnInit {
   public quantity = 1;
 
-  @Input() product: Product;
+  @Input() public product: Product;
+  @Input() public addToCartEnabled: boolean;
 
   constructor(private cart: Cart) { }
 

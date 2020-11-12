@@ -35,5 +35,5 @@ Requirments:
 [x]  When the cart icon is clicked it redirects to the cart page. 
 
 ### Cart
-[]  Display the existing products in a readonly manner (reuse the component from the dashboard product display, without the + and - ).
-[]  Calculate and display the total value of the cart.
+[x]  Display the existing products in a readonly manner (reuse the component from the dashboard product display, without the + and - ).
+[x]  Calculate and display the total value of the cart.

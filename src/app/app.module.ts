@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -36,7 +37,8 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTableModule
   ],
   providers: [Cart],
   bootstrap: [AppComponent]

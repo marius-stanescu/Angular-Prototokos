@@ -8,17 +8,17 @@
     <mat-card-actions>
         <mat-grid-list cols="2" rowHeight="50">
             <mat-grid-tile>{{product.price}}€</mat-grid-tile>
-            <mat-grid-tile>
+            <mat-grid-tile *ngIf="addToCartEnabled">
                 <button mat-icon-button aria-label="Decrease quantity" (click)="decreaseQuantity()" [disabled]="!canDecreaseQuantity">
                     <mat-icon>remove</mat-icon>
-                  </button>
-                  <span class="quantity">{{quantity}}</span>
-                  <button mat-icon-button aria-label="Increase quantity" (click)="increaseQuantity()">
+                </button>
+                <span class="quantity">{{quantity}}</span>
+                <button mat-icon-button aria-label="Increase quantity" (click)="increaseQuantity()">
                     <mat-icon>add</mat-icon>
-                  </button>
-                  <button mat-icon-button color="accent" aria-label="Add to cart" (click)="addToCart()">
+                </button>
+                <button mat-icon-button color="accent" aria-label="Add to cart" (click)="addToCart()">
                     <mat-icon>add_shopping_cart</mat-icon>
-                  </button>
+                </button>
             </mat-grid-tile>
         </mat-grid-list>
     </mat-card-actions>

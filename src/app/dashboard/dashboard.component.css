@@ -1,9 +1,0 @@
-.product-card {
-    max-width: 420px;
-}
-.product-card .mat-card-header .mat-card-title {
-    height: 40px;
-}
-.product-card .mat-card-content {
-    height: 120px;
-}

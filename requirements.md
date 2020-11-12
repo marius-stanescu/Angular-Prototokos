@@ -27,9 +27,9 @@ Requirments:
 []  Validations: All fields are required, email must match email patterns, password must match confirm password. 
 
 ### Dashboard
-[]  Create a json containing product categories, each category containing a set of products, a name and an id. 
-[]  Have a tab selector for the product categories. Whenever a product category is selected, display the products for that category. 
-[]  Each product displays name, description, price and a + and - icon. 
+[x]  Create a json containing product categories, each category containing a set of products, a name and an id. 
+[x]  Have a tab selector for the product categories. Whenever a product category is selected, display the products for that category. 
+[x]  Each product displays name, description, price and a + and - icon. 
 []  The cart information is saved into localStorage every time a change is made.
 []  There must be a cart icon present somewhere on top of the dashboard page that displays the number of items in the cart. When clicked redirects to the cart page. 
 

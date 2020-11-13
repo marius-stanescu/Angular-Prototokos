@@ -1,0 +1,9 @@
+form {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #212121;
+}
+form .mat-input-element {
+    color: #fff
+}

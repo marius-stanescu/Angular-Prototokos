@@ -25,6 +25,7 @@ import { Cart } from './model/cart';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserService } from './_services/user.service';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserService } from './_services/user.service';
     ProductComponent,
     CartDetailsComponent,
     UserRegisterComponent,
-    MustMatchDirective
+    MustMatchDirective,
+    UserLoginComponent
   ],
   imports: [
     CommonModule,

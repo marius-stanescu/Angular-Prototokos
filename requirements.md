@@ -2,7 +2,7 @@
 
 [x]  Use Angular CLI ( https://cli.angular.io/ ) to generate a new project.
 [x]  Register information is saved into local storage.
-[]  Login information is checked against saved users in local storage. If the information is correct, save another entry in localStorage with the currentUser.
+[x]  Login information is checked against saved users in local storage. If the information is correct, save another entry in localStorage with the currentUser.
 []  Create a Route Guard for the Dashboard page, that checks if there is a logged in user (if current user prop exists in local storage). If its not, redirect to login.
 []  Create a route guard for the Login and Register pages. If the user is logged in on page load, redirect to dashboard
 [x]  Use template forms for login / register UI's
@@ -14,9 +14,9 @@
 ### Login
 Form fields: Email, password
 Requirments: 
-[]  If user attempts login without both fields filled, show error messages under the field.
+[x]  If user attempts login without both fields filled, show error messages under the field.
 []  If user is already logged in, redirect to dashboard. (using the route guard previously mentioned)
-[]  Have a redirect using the angular router on the login page that sends the user to register page
+[x]  Have a redirect using the angular router on the login page that sends the user to register page (? - maybe on the dashboard page)
 
 ### Register
 Form fields: Email, password, confirm password, name

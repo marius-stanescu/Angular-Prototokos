@@ -6,6 +6,8 @@ import { User } from '../model/user';
 })
 export class UserService {
 
+  public currentUser: User = null;
+
   constructor() { }
 
   public register(user: User) {
@@ -19,5 +21,19 @@ export class UserService {
     }
 
     localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  public login(email: string, password: string): boolean {
+    let users = [];
+    if (localStorage.getItem('users')) {
+      users = JSON.parse(localStorage.getItem('users'));
+    }
+    var user = users.filter(u => u.email == email && u.password == password)[0];
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return true;
+    }
+
+    return false;
   }
 }

@@ -22,6 +22,6 @@ export class UserRegisterComponent implements OnInit {
   public register() {
     const newUser = new User(this.form.name, this.form.email, this.form.password);
     this.userService.register(newUser);
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/login']);
   }
 }

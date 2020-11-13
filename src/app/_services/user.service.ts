@@ -6,9 +6,15 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-  public currentUser: User = null;
-
   constructor() { }
+
+  public get currentUser(): User {
+    return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  public get isLoggedIn(): boolean {
+    return this.currentUser !== undefined && this.currentUser !== null;
+  }
 
   public register(user: User) {
     let users = []
@@ -35,5 +41,9 @@ export class UserService {
     }
 
     return false;
+  }
+
+  public logout() {
+    localStorage.removeItem('currentUser');
   }
 }

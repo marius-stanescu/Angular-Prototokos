@@ -24,6 +24,7 @@ import { ProductComponent } from './product/product.component';
 import { Cart } from './model/cart';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { UserService } from './_services/user.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [Cart],
+  providers: [Cart, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

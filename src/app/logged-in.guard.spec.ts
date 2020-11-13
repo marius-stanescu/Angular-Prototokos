@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { LoggedInGuard } from './logged-in.guard';
 
-describe('DashboardGuard', () => {
+describe('LoggedInGuard', () => {
   let guard: LoggedInGuard;
 
   beforeEach(() => {

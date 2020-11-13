@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardGuard } from './dashboard/dashboard.guard';
+import { LoggedInGuard } from './logged-in.guard';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [DashboardGuard] },
-  { path: 'register', component: UserRegisterComponent },
-  { path: 'login', component: UserLoginComponent },
+  { path: 'register', component: UserRegisterComponent, canActivate: [LoggedInGuard] },
+  { path: 'login', component: UserLoginComponent, canActivate: [LoggedInGuard] },
   { path: 'cart', component: CartDetailsComponent, canActivate: [DashboardGuard] },
   { path: "**", redirectTo: "/dashboard" }
 ];

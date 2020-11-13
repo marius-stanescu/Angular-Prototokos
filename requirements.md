@@ -5,7 +5,7 @@
 []  Login information is checked against saved users in local storage. If the information is correct, save another entry in localStorage with the currentUser.
 []  Create a Route Guard for the Dashboard page, that checks if there is a logged in user (if current user prop exists in local storage). If its not, redirect to login.
 []  Create a route guard for the Login and Register pages. If the user is logged in on page load, redirect to dashboard
-[]  Use template forms for login / register UI's
+[x]  Use template forms for login / register UI's
 []  On both dashboard and cart pages a logout icon must be present. When clicked must clear the currentUser prop from localStorage and redirect to login.
 []  Dashboard and Cart pages must be in a seperate module that is lazily loaded by the angular router when the route its accesed.
 [x]  Create a dashboard service that tracks the cart information on the current session. 
@@ -22,9 +22,9 @@ Requirments:
 Form fields: Email, password, confirm password, name
 Requirments:  
 []  If user is already logged in, redirect to dashboard.
-[]  If user attempts registering without all fields filled, or has invalid fields, show error messages under the field 
+[x]  If user attempts registering without all fields filled, or has invalid fields, show error messages under the field 
 []  Have a redirect using the angular router on the register page that sends to login 
-[]  Validations: All fields are required, email must match email patterns, password must match confirm password. 
+[x]  Validations: All fields are required, email must match email patterns, password must match confirm password. 
 
 ### Dashboard
 [x]  Create a json containing product categories, each category containing a set of products, a name and an id. 

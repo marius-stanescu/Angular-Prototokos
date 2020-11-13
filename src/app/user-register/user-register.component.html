@@ -1,0 +1,49 @@
+<form #registerForm="ngForm" [mustMatch]="['password', 'confirmPassword']">
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" name="name" #name="ngModel" [(ngModel)]="form.name" required />
+            <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                <span *ngIf="name.errors.required">The name is <strong>required</strong>.</span>
+            </mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="form.email" type="email"
+                required email />
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                <span *ngIf="email.errors.required">The email is <strong>required</strong>.</span>
+                <span *ngIf="email.errors.email">The email is <strong>invalid</strong>.</span>
+            </mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" name="password" #password="ngModel" [(ngModel)]="form.password"
+                type="password" required />
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                <span *ngIf="password.errors.required">The password is <strong>required</strong>.</span>
+            </mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm password</mat-label>
+            <input matInput placeholder="Confirm password" name="confirmPassword" #confirmPassword="ngModel"
+                [(ngModel)]="form.confirmPassword" type="password" required />
+            <mat-error *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                <span *ngIf="confirmPassword.errors.required">The password confirmation is <strong>required</strong>.</span>
+                <span *ngIf="confirmPassword.errors.mustMatch">The password and password confirmation <strong>do not match</strong>.</span>
+            </mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <button mat-flat-button color="primary" type="submit"
+            [disabled]="!registerForm.form.valid" (click)="register()">
+            Register
+        </button>
+    </p>
+</form>

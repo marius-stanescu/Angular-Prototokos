@@ -6,7 +6,11 @@ export class Cart {
     public items: Array<CartItem>;
 
     constructor() {
-        this.items = new Array<CartItem>();
+        if (localStorage.getItem('cart')) {
+            this.items = JSON.parse(localStorage.getItem('cart'));
+        } else {
+            this.items = new Array<CartItem>();
+        }
     }
 
     get count() {
@@ -19,6 +23,8 @@ export class Cart {
 
     addItem(product: Product, quantity: number) {
         this.items.push(new CartItem(product, quantity));
+        localStorage.setItem('cart', JSON.stringify(this.items));
+        //TODO: maybe save just the product id and quantity
     }
 }
 

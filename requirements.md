@@ -30,7 +30,7 @@ Requirments:
 [x]  Create a json containing product categories, each category containing a set of products, a name and an id. 
 [x]  Have a tab selector for the product categories. Whenever a product category is selected, display the products for that category. 
 [x]  Each product displays name, description, price and a + and - icon. 
-[]  The cart information is saved into localStorage every time a change is made.
+[x]  The cart information is saved into localStorage every time a change is made.
 [x]  There must be a cart icon present somewhere on top of the dashboard page that displays the number of items in the cart.
 [x]  When the cart icon is clicked it redirects to the cart page. 
 

@@ -3,6 +3,8 @@ import { Product } from './product';
 
 @Injectable()
 export class Cart {
+//TODO: Shouldn't the cart belong to a user?
+
     public items: Array<CartItem>;
 
     constructor() {

@@ -3,7 +3,7 @@
 [x]  Use Angular CLI ( https://cli.angular.io/ ) to generate a new project.
 [x]  Register information is saved into local storage.
 [x]  Login information is checked against saved users in local storage. If the information is correct, save another entry in localStorage with the currentUser.
-[]  Create a Route Guard for the Dashboard page, that checks if there is a logged in user (if current user prop exists in local storage). If its not, redirect to login.
+[x]  Create a Route Guard for the Dashboard page, that checks if there is a logged in user (if current user prop exists in local storage). If its not, redirect to login.
 []  Create a route guard for the Login and Register pages. If the user is logged in on page load, redirect to dashboard
 [x]  Use template forms for login / register UI's
 [x]  On both dashboard and cart pages a logout icon must be present. When clicked must clear the currentUser prop from localStorage and redirect to login.

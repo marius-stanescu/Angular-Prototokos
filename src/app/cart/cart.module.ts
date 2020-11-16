@@ -6,11 +6,13 @@ import { MatTableModule } from '@angular/material/table';
 import { CartRoutingModule } from './cart-routing.module';
 import { CartDetailsComponent } from './cart-details.component';
 import { ProductModule } from '../product/product.module';
+import { CartComponent } from './cart.component';
 
 
 @NgModule({
   declarations: [
-    CartDetailsComponent
+    CartDetailsComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

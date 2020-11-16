@@ -3,6 +3,7 @@ import { Product } from './product';
 
 @Injectable()
 export class Cart {
+//TODO: Maybe rename this to CartService
 //TODO: Shouldn't the cart belong to a user?
 
     public items: Array<CartItem>;
@@ -20,7 +21,7 @@ export class Cart {
     }
 
     get total() {
-        return this.items.reduce((sum, item) => sum + item.total, 0)
+        return this.items.reduce((sum, item) => sum + item.total, 0);
     }
 
     addItem(product: Product, quantity: number) {
@@ -34,7 +35,7 @@ export class CartItem {
     constructor(public product: Product,
         public quantity: number) { }
 
-    get total() {
+    public get total() {
         return this.product.price * this.quantity;
     }
 }

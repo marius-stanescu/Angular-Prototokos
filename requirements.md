@@ -37,3 +37,15 @@ Requirments:
 ### Cart
 [x]  Display the existing products in a readonly manner (reuse the component from the dashboard product display, without the + and - ).
 [x]  Calculate and display the total value of the cart.
+
+### Other requirements
+[] Have a smart / dumb components architecture approach ( https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/ )
+[] Retrieve the mock data from a Fake HTTP Api using the HttpClient service.
+[] Implement NGRX for state management in your application ( https://ngrx.io/ ) and change the cart adding flow / session management / product retrieval to be through ngrx. 
+[] Read up on change detection strategies and optimize your application performance ( https://blog.angular-university.io/how-does-angular-2-change-detection-really-work/ )
+[] Add the optional scenario where a product can have extras ( 
+Ex Product: Latte;
+ Ex extras: Short, Tall, Grande 
+). The extras can have a price of their own or be free. On the product model define a property that indicates if choosing a extra is mandatory or not. 
+[] Create a custom form control for the extra selecting component.  ( https://medium.com/@lukaonik/how-to-write-custom-form-controls-in-angular-1285ed00bba0 ).
+[] Create a feature module that will export the custom form control. ( https://angular.io/guide/feature-modules )

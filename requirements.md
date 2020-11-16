@@ -7,7 +7,7 @@
 [x]  Create a route guard for the Login and Register pages. If the user is logged in on page load, redirect to dashboard
 [x]  Use template forms for login / register UI's
 [x]  On both dashboard and cart pages a logout icon must be present. When clicked must clear the currentUser prop from localStorage and redirect to login.
-[]  Dashboard and Cart pages must be in a seperate module that is lazily loaded by the angular router when the route its accesed.
+[x]  Dashboard and Cart pages must be in a seperate module that is lazily loaded by the angular router when the route its accesed.
 [x]  Create a dashboard service that tracks the cart information on the current session. 
 
 

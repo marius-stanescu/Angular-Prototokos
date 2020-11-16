@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,10 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MustMatchDirective } from './_helpers/must-match.directive';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductComponent } from './product/product.component';
 import { Cart } from './model/cart';
-import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserService } from './_services/user.service';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -30,9 +26,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    ProductComponent,
-    CartDetailsComponent,
     UserRegisterComponent,
     MustMatchDirective,
     UserLoginComponent
@@ -44,7 +37,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatTabsModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,

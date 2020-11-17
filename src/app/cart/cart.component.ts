@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../model/cart';
+import { SmartComponent } from '../smart-component';
 import { CartItemVm, CartVm } from './cart-vm';
 
 @Component({
@@ -7,11 +8,13 @@ import { CartItemVm, CartVm } from './cart-vm';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent extends SmartComponent {
 
   public cart: CartVm;
 
-  constructor(private cartService: Cart) { }
+  constructor(private cartService: Cart) {
+    super();
+  }
 
   ngOnInit(): void {
     var items = this.cartService.items

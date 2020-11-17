@@ -3,14 +3,15 @@ import { Product } from './product';
 
 @Injectable()
 export class Cart {
-//TODO: Maybe rename this to CartService
-//TODO: Shouldn't the cart belong to a user?
+    //TODO: Maybe rename this to CartService
+    //TODO: Shouldn't the cart belong to a user?
 
     public items: Array<CartItem>;
 
     constructor() {
         if (localStorage.getItem('cart')) {
-            this.items = JSON.parse(localStorage.getItem('cart'));
+            var cart = JSON.parse(localStorage.getItem('cart'));
+            this.items = cart.map(item => new CartItem(item.product, item.quantity));
         } else {
             this.items = new Array<CartItem>();
         }

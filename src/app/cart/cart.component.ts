@@ -15,8 +15,8 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     var items = this.cartService.items
-      .map(item => new CartItemVm(item.product, item.quantity, item.product.price * item.quantity));
-    this.cart = new CartVm(items, this.cartService.count, items.reduce((sum, item) => sum + item.total, 0));
+      .map(item => new CartItemVm(item.product, item.quantity, item.total));
+    this.cart = new CartVm(items, this.cartService.count, this.cartService.total);
   }
 
 }

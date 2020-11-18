@@ -1,8 +1,12 @@
 .product-card {
     max-width: 420px;
+    height: 420px;
 }
 .product-card .mat-card-header .mat-card-title {
     height: 40px;
+}
+.product-card img {
+    max-width: 100px;
 }
 .product-card .mat-card-content {
     height: 120px;

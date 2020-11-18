@@ -1,4 +1,4 @@
-<mat-grid-list cols="4" rowHeight="300">
+<mat-grid-list cols="4" rowHeight="500">
     <mat-grid-tile *ngFor="let product of products">
         <app-product [product]="product" [addToCartEnabled]="true" (addedToCart)="addToCart($event)"></app-product>
     </mat-grid-tile>

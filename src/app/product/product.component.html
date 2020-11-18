@@ -1,7 +1,8 @@
 <mat-card class="product-card">
     <mat-card-header>
-        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-title>{{product.title}}</mat-card-title>
     </mat-card-header>
+    <img mat-card-image src="{{product.image}}">
     <mat-card-content>
         <p>{{product.description}}</p>
     </mat-card-content>
@@ -9,7 +10,8 @@
         <mat-grid-list cols="2" rowHeight="50">
             <mat-grid-tile>{{product.price}}€</mat-grid-tile>
             <mat-grid-tile *ngIf="addToCartEnabled">
-                <button mat-icon-button aria-label="Decrease quantity" (click)="decreaseQuantity()" [disabled]="!canDecreaseQuantity">
+                <button mat-icon-button aria-label="Decrease quantity" (click)="decreaseQuantity()"
+                    [disabled]="!canDecreaseQuantity">
                     <mat-icon>remove</mat-icon>
                 </button>
                 <span class="quantity">{{quantity}}</span>

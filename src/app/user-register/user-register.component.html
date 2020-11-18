@@ -35,15 +35,23 @@
             <input matInput placeholder="Confirm password" name="confirmPassword" #confirmPassword="ngModel"
                 [(ngModel)]="form.confirmPassword" type="password" required />
             <mat-error *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
-                <span *ngIf="confirmPassword.errors.required">The password confirmation is <strong>required</strong>.</span>
-                <span *ngIf="confirmPassword.errors.mustMatch">The password and password confirmation <strong>do not match</strong>.</span>
+                <span *ngIf="confirmPassword.errors.required">The password confirmation is
+                    <strong>required</strong>.</span>
+                <span *ngIf="confirmPassword.errors.mustMatch">The password and password confirmation <strong>do not
+                        match</strong>.</span>
             </mat-error>
         </mat-form-field>
     </p>
     <p>
-        <button mat-flat-button color="primary" type="submit"
-            [disabled]="!registerForm.form.valid" (click)="register()">
+        <button mat-flat-button color="primary" type="submit" [disabled]="!registerForm.form.valid"
+            (click)="register()">
             Register
         </button>
+    </p>
+    <br />
+    <br />
+    <p>
+        Already have an account?<br />
+        <a routerLink="/login" mat-button>Log in</a>
     </p>
 </form>

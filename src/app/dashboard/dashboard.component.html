@@ -1,11 +1,7 @@
 <mat-tab-group mat-align-tabs="center" backgroundColor="primary">
     <mat-tab *ngFor="let category of categories" label={{category.name}}>
         <ng-template matTabContent>
-            <mat-grid-list cols="4" rowHeight="300">
-                <mat-grid-tile *ngFor="let product of getProducts(category.id)">
-                    <app-product [product]="product" [addToCartEnabled]="true" (addedToCart)="addToCart($event)"></app-product>
-                </mat-grid-tile>
-            </mat-grid-list>
+            <app-product-list [categoryId]="category.id"></app-product-list>
         </ng-template>
     </mat-tab>
 </mat-tab-group>

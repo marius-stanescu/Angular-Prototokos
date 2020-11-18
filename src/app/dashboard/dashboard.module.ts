@@ -7,12 +7,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ProductModule } from '../product/product.module';
+import { ProductListComponent } from '../product-list/product-list.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    ProductListComponent
   ],
   imports: [
     DashboardRoutingModule,

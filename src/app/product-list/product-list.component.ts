@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
-import { Products } from '../model/products';
 import { SmartComponent } from '../smart-component';
 import { ProductService } from '../_services/product.service';
+import { pipe } from 'rxjs'
 
 @Component({
   selector: 'app-product-list',
@@ -25,6 +25,7 @@ export class ProductListComponent extends SmartComponent {
   ngOnInit(): void {
     this.productService
       .getProducts(this.categoryId)
+      .pipe(this.untilComponentDestroy())
       .subscribe((data: Product[]) => this.products = data);
   }
 

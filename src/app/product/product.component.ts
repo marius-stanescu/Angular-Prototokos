@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Cart } from '../model/cart';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CartItemVm } from '../cart/cart-vm';
+import { DumbComponent } from '../dumb-component';
+import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
 
 @Component({
@@ -8,15 +10,17 @@ import { Product } from '../model/product';
   styleUrls: ['./product.component.css']
 })
 
-export class ProductComponent implements OnInit {
+export class ProductComponent extends DumbComponent {
   public quantity = 1;
 
   @Input() public product: Product;
   @Input() public addToCartEnabled: boolean;
 
-  constructor(private cart: Cart) { }
+  @Output()
+  addedToCart: EventEmitter<CartItem> = new EventEmitter<CartItem>();
 
-  ngOnInit(): void {
+  constructor() {
+    super();
   }
 
   get canDecreaseQuantity(): boolean {
@@ -35,6 +39,6 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    this.cart.addItem(this.product, this.quantity);
+    this.addedToCart.emit(new CartItem(this.product, this.quantity));
   }
 }

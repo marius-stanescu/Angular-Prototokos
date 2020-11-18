@@ -25,8 +25,8 @@ export class Cart {
         return this.items.reduce((sum, item) => sum + item.total, 0);
     }
 
-    addItem(product: Product, quantity: number) {
-        this.items.push(new CartItem(product, quantity));
+    addItem(cartItem: CartItem) {
+        this.items.push(cartItem);
         localStorage.setItem('cart', JSON.stringify(this.items));
         //TODO: maybe save just the product id and quantity
     }

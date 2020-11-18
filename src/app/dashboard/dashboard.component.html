@@ -3,7 +3,7 @@
         <ng-template matTabContent>
             <mat-grid-list cols="4" rowHeight="300">
                 <mat-grid-tile *ngFor="let product of getProducts(category.id)">
-                    <app-product [product]="product" [addToCartEnabled]="true"></app-product>
+                    <app-product [product]="product" [addToCartEnabled]="true" (addedToCart)="addToCart($event)"></app-product>
                 </mat-grid-tile>
             </mat-grid-list>
         </ng-template>

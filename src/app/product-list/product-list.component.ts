@@ -3,6 +3,7 @@ import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
 import { Products } from '../model/products';
 import { SmartComponent } from '../smart-component';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,12 +17,15 @@ export class ProductListComponent extends SmartComponent {
 
   public products: Array<Product> = new Array<Product>();
 
-  constructor(private cartService: Cart) {
+  constructor(private productService: ProductService,
+    private cartService: Cart) {
     super();
   }
 
   ngOnInit(): void {
-    this.products = Products.filter(p => p.categoryId === this.categoryId);
+    this.productService
+      .getProducts(this.categoryId)
+      .subscribe((data: Product[]) => this.products = data);
   }
 
   addToCart(cartItem: CartItem) {

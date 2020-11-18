@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../model/category';
-import { Categories } from '../model/categories';
-import { Products } from '../model/products';
 import { SmartComponent } from '../smart-component';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,15 +10,11 @@ import { SmartComponent } from '../smart-component';
 })
 export class DashboardComponent extends SmartComponent {
 
-  constructor() {
+  constructor(private productService: ProductService) {
     super();
   }
 
   get categories(): Category[] {
-    return Categories;
-  }
-
-  getProducts(categoryId: number) {
-    return Products.filter(p => p.categoryId == categoryId);
+    return this.productService.getCategories();
   }
 }

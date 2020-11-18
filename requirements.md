@@ -40,7 +40,7 @@ Requirments:
 
 ### Other requirements
 [x] Have a smart / dumb components architecture approach ( https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/ )
-[] Retrieve the mock data from a Fake HTTP Api using the HttpClient service.
+[x] Retrieve the mock data from a Fake HTTP Api using the HttpClient service.
 [] Implement NGRX for state management in your application ( https://ngrx.io/ ) and change the cart adding flow / session management / product retrieval to be through ngrx. 
 [] Read up on change detection strategies and optimize your application performance ( https://blog.angular-university.io/how-does-angular-2-change-detection-really-work/ )
 [] Add the optional scenario where a product can have extras ( 

@@ -5,6 +5,9 @@ export const initialState = new Cart();
 
 export function CartReducer(state = initialState, action: CartActions) {
     switch (action.type) {
+        case CartActionTypes.LoadCartSuccess:
+            return action.payload;
+
         case CartActionTypes.Add:
             return new Cart([...state.items, action.payload]);
 

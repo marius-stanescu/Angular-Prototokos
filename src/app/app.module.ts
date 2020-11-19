@@ -24,8 +24,17 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserService } from './_services/user.service';
 import { UserLoginComponent } from './user-login/user-login.component';
 
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { localStorageSync } from 'ngrx-store-localstorage';
 import { CartReducer } from './store/cart.reducer';
+import { CartEffects } from './store/cart.effects';
+
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({ keys: ['cart'], rehydrate: true })(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -50,7 +59,8 @@ import { CartReducer } from './store/cart.reducer';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    StoreModule.forRoot({ cart: CartReducer }),
+    StoreModule.forRoot({ cart: CartReducer }, { metaReducers }),
+    EffectsModule.forRoot([ CartEffects ]),
   ],
   providers: [Cart, UserService],
   bootstrap: [AppComponent]

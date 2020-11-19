@@ -1,10 +1,12 @@
 import { Action } from '@ngrx/store';
-import { CartItem } from '../model/cart';
+import { Cart, CartItem } from '../model/cart';
 
 
 export enum CartActionTypes {
     Add = '[Cart] Add to cart',
     Remove = '[Cart] Remove from cart',
+    LoadCart = '[Cart] Load cart',
+    LoadCartSuccess = '[Cart] Cart loaded',
 }
 
 export class AddToCart implements Action {
@@ -19,4 +21,14 @@ export class RemoveFromCart implements Action {
     constructor(public payload: CartItem) { }
 }
 
-export type CartActions = AddToCart | RemoveFromCart;
+export class LoadCart implements Action {
+    readonly type = CartActionTypes.LoadCart;
+}
+
+export class LoadCartSuccess implements Action {
+    readonly type = CartActionTypes.LoadCartSuccess;
+
+    constructor(public payload: Cart) { }
+}
+
+export type CartActions = AddToCart | RemoveFromCart | LoadCart | LoadCartSuccess;

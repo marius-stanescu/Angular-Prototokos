@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Cart, CartItem } from './model/cart';
 import { User } from './model/user';
+import { LoadCart } from './store/cart.actions';
 import { UserService } from './_services/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from './_services/user.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public currentUser: User;
   public cart: Cart;
@@ -23,7 +24,11 @@ export class AppComponent {
     store.pipe(select('cart')).subscribe(data => this.cart = data);
   }
 
-  title = 'Prototokos store';
+  ngOnInit() {
+    this.store.dispatch(new LoadCart());
+  }
+
+  public title = 'Prototokos store';
 
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn;

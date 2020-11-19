@@ -9,25 +9,22 @@ export class CartService {
 
   constructor(private userService: UserService) { }
 
-  get currentCart(): Cart {
+  private get cartKey() {
+    return 'cart'; //-' + this.userService.currentUser?.email;
+  }
+
+  public getCart(): Cart {
     let cart = new Cart();
-    if (localStorage.getItem(this.cartKey)) {
-      cart.items = JSON.parse(localStorage.getItem(this.cartKey)).items
+    let json = localStorage.getItem(this.cartKey);
+    if (json) {
+      cart.items = JSON.parse(json).items
         .map(item => new CartItem(item.product, item.quantity));
     }
 
     return cart;
   }
 
-  private get cartKey() {
-    return 'cart-' + this.userService.currentUser?.email;
-  }
-
-  addItem(cartItem: CartItem) {
-    let cart = this.currentCart;
-    //TODO: Update existing product quantity instead of adding it again
-    cart.items.push(cartItem);
+  public updateCart(cart: Cart) {
     localStorage.setItem(this.cartKey, JSON.stringify(cart));
-    //TODO: maybe save just the product id and quantity
   }
 }

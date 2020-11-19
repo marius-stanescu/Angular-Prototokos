@@ -3,7 +3,7 @@ import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
 import { SmartComponent } from '../smart-component';
 import { ProductService } from '../_services/product.service';
-import { pipe } from 'rxjs'
+import { CartService } from '../_services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +18,7 @@ export class ProductListComponent extends SmartComponent {
   public products: Array<Product> = new Array<Product>();
 
   constructor(private productService: ProductService,
-    private cartService: Cart) {
+    private cartService: CartService) {
     super();
   }
 

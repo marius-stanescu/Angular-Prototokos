@@ -3,19 +3,10 @@ import { Product } from './product';
 
 @Injectable()
 export class Cart {
-    //TODO: Maybe rename this to CartService
-    //TODO: Shouldn't the cart belong to a user?
 
-    public items: Array<CartItem>;
+    public items: Array<CartItem> = new Array<CartItem>();
 
-    constructor() {
-        if (localStorage.getItem('cart')) {
-            var cart = JSON.parse(localStorage.getItem('cart'));
-            this.items = cart.map(item => new CartItem(item.product, item.quantity));
-        } else {
-            this.items = new Array<CartItem>();
-        }
-    }
+    constructor() { }
 
     get count() {
         return this.items.reduce((count, item) => count + item.quantity, 0);
@@ -23,12 +14,6 @@ export class Cart {
 
     get total() {
         return this.items.reduce((sum, item) => sum + item.total, 0);
-    }
-
-    addItem(cartItem: CartItem) {
-        this.items.push(cartItem);
-        localStorage.setItem('cart', JSON.stringify(this.items));
-        //TODO: maybe save just the product id and quantity
     }
 }
 

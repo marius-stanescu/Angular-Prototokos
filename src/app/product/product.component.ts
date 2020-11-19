@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CartItemVm } from '../cart/cart-vm';
 import { DumbComponent } from '../dumb-component';
 import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';

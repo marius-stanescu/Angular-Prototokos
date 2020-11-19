@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { DumbComponent } from '../dumb-component';
-import { CartVm } from './cart-vm';
+import { Cart } from '../model/cart';
 
 @Component({
   selector: 'app-cart-details',
@@ -11,7 +11,7 @@ import { CartVm } from './cart-vm';
 export class CartDetailsComponent extends DumbComponent {
 
   @Input()
-  public cart: CartVm;
+  public cart: Cart;
 
   constructor() {
     super();

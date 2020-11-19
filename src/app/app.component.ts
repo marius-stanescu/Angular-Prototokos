@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from './model/cart';
 import { User } from './model/user';
+import { CartService } from './_services/cart.service';
 import { UserService } from './_services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AppComponent {
 
   public currentUser: User = null;
 
-  constructor(public cart: Cart,
+  constructor(private cartService: CartService,
     private userService: UserService,
     private router: Router) {
     this.currentUser = userService.currentUser;
@@ -24,6 +25,10 @@ export class AppComponent {
 
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn;
+  }
+
+  get cart(): Cart {
+    return this.cartService.currentCart;
   }
 
   public logout() {

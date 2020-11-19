@@ -20,7 +20,7 @@ export class CartService {
   }
 
   private get cartKey() {
-    return 'cart-' + this.userService.currentUser.email;
+    return 'cart-' + this.userService.currentUser?.email;
   }
 
   addItem(cartItem: CartItem) {

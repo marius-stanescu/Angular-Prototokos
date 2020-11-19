@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Cart } from '../model/cart';
+import { Cart, CartItem } from '../model/cart';
 import { SmartComponent } from '../smart-component';
+import { RemoveFromCart } from '../store/cart.actions';
 
 @Component({
   selector: 'app-cart',
@@ -20,4 +21,7 @@ export class CartComponent extends SmartComponent {
   ngOnInit(): void {
   }
 
+  removeFromCart(cartItem: CartItem) {
+    this.store.dispatch(new RemoveFromCart(cartItem));
+  }
 }

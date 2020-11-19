@@ -4,9 +4,11 @@ import { Product } from './product';
 @Injectable()
 export class Cart {
 
-    public items: Array<CartItem> = new Array<CartItem>();
+    public items: CartItem[] = [];
 
-    constructor() { }
+    constructor(items?: CartItem[]) {
+        this.items = items || [];
+    }
 
     get count() {
         return this.items.reduce((count, item) => count + item.quantity, 0);

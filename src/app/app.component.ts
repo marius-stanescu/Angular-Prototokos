@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from './model/cart';
+import { select, Store } from '@ngrx/store';
+import { Cart, CartItem } from './model/cart';
 import { User } from './model/user';
-import { CartService } from './_services/cart.service';
 import { UserService } from './_services/user.service';
 
 @Component({
@@ -13,22 +13,20 @@ import { UserService } from './_services/user.service';
 
 export class AppComponent {
 
-  public currentUser: User = null;
+  public currentUser: User;
+  public cart: Cart;
 
-  constructor(private cartService: CartService,
+  constructor(private store: Store<{ cart: Cart }>,
     private userService: UserService,
     private router: Router) {
     this.currentUser = userService.currentUser;
+    store.pipe(select('cart')).subscribe(data => this.cart = data);
   }
 
   title = 'Prototokos store';
 
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn;
-  }
-
-  get cart(): Cart {
-    return this.cartService.currentCart;
   }
 
   public logout() {

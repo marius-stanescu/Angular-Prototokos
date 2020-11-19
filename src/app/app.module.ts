@@ -23,7 +23,9 @@ import { Cart } from './model/cart';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserService } from './_services/user.service';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { ProductListComponent } from './product-list/product-list.component';
+
+import { StoreModule } from '@ngrx/store';
+import { CartReducer } from './store/cart.reducer';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { ProductListComponent } from './product-list/product-list.component';
     MatBadgeModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    StoreModule.forRoot({ cart: CartReducer }),
   ],
   providers: [Cart, UserService],
   bootstrap: [AppComponent]

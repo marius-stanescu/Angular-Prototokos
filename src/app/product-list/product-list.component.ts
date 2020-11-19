@@ -3,7 +3,8 @@ import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
 import { SmartComponent } from '../smart-component';
 import { ProductService } from '../_services/product.service';
-import { CartService } from '../_services/cart.service';
+import { Store } from '@ngrx/store';
+import { AddToCart } from '../store/cart.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,7 @@ export class ProductListComponent extends SmartComponent {
   public products: Array<Product> = new Array<Product>();
 
   constructor(private productService: ProductService,
-    private cartService: CartService) {
+    private store: Store<{ cart: Cart }>) {
     super();
   }
 
@@ -30,7 +31,7 @@ export class ProductListComponent extends SmartComponent {
   }
 
   addToCart(cartItem: CartItem) {
-    this.cartService.addItem(cartItem);
+    this.store.dispatch(new AddToCart(cartItem));
   }
 
 }

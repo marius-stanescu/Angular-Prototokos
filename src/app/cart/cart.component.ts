@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Cart } from '../model/cart';
 import { SmartComponent } from '../smart-component';
-import { CartService } from '../_services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,12 +12,12 @@ export class CartComponent extends SmartComponent {
 
   public cart: Cart;
 
-  constructor(private cartService: CartService) {
+  constructor(private store: Store<{ cart: Cart }>) {
     super();
+    store.pipe(select('cart')).subscribe(data => this.cart = data);
   }
 
   ngOnInit(): void {
-    this.cart = this.cartService.currentCart;
   }
 
 }

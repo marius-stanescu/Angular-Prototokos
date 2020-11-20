@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DumbComponent } from '../dumb-component';
 import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
@@ -6,11 +6,12 @@ import { Product } from '../model/product';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class ProductComponent extends DumbComponent {
-  public quantity = 1;
+  public quantity: number = 1;
 
   @Input() public product: Product;
   @Input() public addToCartEnabled: boolean;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Cart, CartItem } from '../model/cart';
@@ -12,14 +12,10 @@ import { RemoveFromCart } from '../store/cart.actions';
 })
 export class CartComponent extends SmartComponent {
 
-  public cart$: Observable<Cart>;
+  public cart$: Observable<Cart> = this.store.pipe(select(state => state.cart));
 
   constructor(private store: Store<{ cart: Cart }>) {
     super();
-    this.cart$ = store.pipe(select('cart'));
-  }
-
-  ngOnInit(): void {
   }
 
   removeFromCart(cartItem: CartItem) {

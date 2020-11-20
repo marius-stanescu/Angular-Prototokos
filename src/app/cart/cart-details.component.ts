@@ -6,7 +6,7 @@ import { Cart, CartItem } from '../model/cart';
   selector: 'app-cart-details',
   templateUrl: './cart-details.component.html',
   styleUrls: ['./cart-details.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartDetailsComponent extends DumbComponent {
 

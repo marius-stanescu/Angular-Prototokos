@@ -10,11 +10,9 @@ import { ProductService } from '../_services/product.service';
 })
 export class DashboardComponent extends SmartComponent {
 
+  public categories: Array<Category> = this.productService.getCategories();
+
   constructor(private productService: ProductService) {
     super();
-  }
-
-  get categories(): Category[] {
-    return this.productService.getCategories();
   }
 }

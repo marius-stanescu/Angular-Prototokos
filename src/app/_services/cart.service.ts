@@ -34,9 +34,9 @@ export class CartService {
       let otherItems = currentItems.filter(item => item.product.id !== cartItem.product.id);
       let quantity = cartItem.quantity + existingItem.quantity;
       cart = new Cart([...otherItems, new CartItem(existingItem.product, quantity)])
+    } else {
+      cart = new Cart([...currentItems, cartItem]);
     }
-
-    cart = new Cart([...currentItems, cartItem]);
 
     this.saveCart(cart);
   }

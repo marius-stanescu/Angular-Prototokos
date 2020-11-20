@@ -1,1 +1,1 @@
-<app-cart-details [cart]="cart" (removedFromCart)="removeFromCart($event)"></app-cart-details>
+<app-cart-details [cart]="cart$ | async" (removedFromCart)="removeFromCart($event)"></app-cart-details>

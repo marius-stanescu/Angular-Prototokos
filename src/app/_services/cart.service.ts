@@ -27,13 +27,24 @@ export class CartService {
 
   public addToCart(cartItem: CartItem) {
     let cart = this.getCart();
-    cart.items.push(cartItem);
+    let currentItems = cart.items;
+    let existingItem = currentItems.find(item => item.product.id === cartItem.product.id);
+
+    if (existingItem) {
+      let otherItems = currentItems.filter(item => item.product.id !== cartItem.product.id);
+      let quantity = cartItem.quantity + existingItem.quantity;
+      cart = new Cart([...otherItems, new CartItem(existingItem.product, quantity)])
+    }
+
+    cart = new Cart([...currentItems, cartItem]);
+
     this.saveCart(cart);
   }
 
   public removeFromCart(cartItem: CartItem) {
     let cart = this.getCart();
     cart.items = cart.items.filter(item => item.product.id !== cartItem.product.id);
+
     this.saveCart(cart);
   }
 

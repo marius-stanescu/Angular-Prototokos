@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cart, CartItem } from '../model/cart';
+import { Product } from '../model/product';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class CartService {
   constructor(private userService: UserService) { }
 
   private get cartKey() {
-    return 'cart'; //-' + this.userService.currentUser?.email;
+    return 'cart-' + this.userService.currentUser?.email;
   }
 
   public getCart(): Cart {
@@ -18,13 +19,25 @@ export class CartService {
     let json = localStorage.getItem(this.cartKey);
     if (json) {
       cart.items = JSON.parse(json).items
-        .map(item => new CartItem(item.product, item.quantity));
+        .map((item: { product: Product; quantity: number; }) => new CartItem(item.product, item.quantity));
     }
 
     return cart;
   }
 
-  public updateCart(cart: Cart) {
+  public addToCart(cartItem: CartItem) {
+    let cart = this.getCart();
+    cart.items.push(cartItem);
+    this.saveCart(cart);
+  }
+
+  public removeFromCart(cartItem: CartItem) {
+    let cart = this.getCart();
+    cart.items = cart.items.filter(item => item.product.id !== cartItem.product.id);
+    this.saveCart(cart);
+  }
+
+  private saveCart(cart: Cart) {
     localStorage.setItem(this.cartKey, JSON.stringify(cart));
   }
 }

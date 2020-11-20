@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
-import { CartActionTypes, LoadCartSuccess } from './cart.actions';
+import { AddedToCart, AddToCart, CartActionTypes, LoadCartSuccess, RemovedFromCart, RemoveFromCart } from './cart.actions';
 import { CartService } from '../_services/cart.service';
 
 @Injectable()
@@ -20,19 +20,21 @@ export class CartEffects {
         })
     );
 
-    // @Effect()
-    // addToCart$ = this.actions$.pipe(
-    //     ofType(CartActionTypes.Add),
-    //     map(() => {
-    //         // this.cartService.updateCart(new Cart());
-    //     })
-    // );
+    @Effect()
+    addToCart$ = this.actions$.pipe(
+        ofType(CartActionTypes.Add),
+        map((action: AddToCart) => {
+            this.cartService.addToCart(action.cartItem);
+            return new AddedToCart(action.cartItem);
+        })
+    );
 
-    // @Effect()
-    // removeFromCart$ = this.actions$.pipe(
-    //     ofType(CartActionTypes.Remove),
-    //     map(() => {
-    //         // this.cartService.updateCart(new Cart());
-    //     })
-    // );
+    @Effect()
+    removeFromCart$ = this.actions$.pipe(
+        ofType(CartActionTypes.Remove),
+        map((action: RemoveFromCart) => {
+            this.cartService.removeFromCart(action.cartItem);
+            return new RemovedFromCart(action.cartItem);
+        })
+    );
 }

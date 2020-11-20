@@ -3,8 +3,10 @@ import { Cart, CartItem } from '../model/cart';
 import { Product } from '../model/product';
 import { SmartComponent } from '../smart-component';
 import { ProductService } from '../_services/product.service';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { AddToCart } from '../store/cart.actions';
+import { Observable } from 'rxjs';
+import { LoadProducts } from '../store/product.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -16,18 +18,15 @@ export class ProductListComponent extends SmartComponent {
   @Input()
   public categoryId: string;
 
-  public products: Array<Product> = new Array<Product>();
+  public products$: Observable<Array<Product>> = this.store.select(state => state.products);
 
   constructor(private productService: ProductService,
-    private store: Store<{ cart: Cart }>) {
+    private store: Store<{ products: Array<Product> }>) {
     super();
   }
 
   ngOnInit(): void {
-    this.productService
-      .getProducts(this.categoryId)
-      .pipe(this.untilComponentDestroy())
-      .subscribe((data: Product[]) => this.products = data);
+    this.store.dispatch(new LoadProducts(this.categoryId));
   }
 
   addToCart(cartItem: CartItem) {

@@ -28,6 +28,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CartReducer } from './store/cart.reducer';
 import { CartEffects } from './store/cart.effects';
+import { ProductReducer } from './store/product.reducer';
+import { ProductEffects } from './store/product.effects';
 
 @NgModule({
   declarations: [
@@ -52,8 +54,8 @@ import { CartEffects } from './store/cart.effects';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    StoreModule.forRoot({ cart: CartReducer }),
-    EffectsModule.forRoot([ CartEffects ]),
+    StoreModule.forRoot({ cart: CartReducer, products: ProductReducer }),
+    EffectsModule.forRoot([ CartEffects, ProductEffects ]),
   ],
   providers: [Cart, UserService],
   bootstrap: [AppComponent]

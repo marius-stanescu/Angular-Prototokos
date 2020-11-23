@@ -31,6 +31,7 @@ import { CartEffects } from './store/cart.effects';
 import { ProductReducer } from './store/product.reducer';
 import { ProductEffects } from './store/product.effects';
 import { LoginFormComponent } from './user-login/login-form/login-form.component';
+import { RegisterFormComponent } from './user-register/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LoginFormComponent } from './user-login/login-form/login-form.component
     UserRegisterComponent,
     MustMatchDirective,
     UserLoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,

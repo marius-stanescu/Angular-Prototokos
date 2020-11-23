@@ -43,6 +43,21 @@ export function UserReducer(state = initialState, action: UserActions): UserStat
                 error: action.error,
             }
         }
+        case UserActionTypes.Logout: {
+            return initialState;
+        }
+        case UserActionTypes.LoadUserSuccess: {
+            if (action.user) {
+                return {
+                    ...state,
+                    isAuthenticated: true,
+                    user: action.user,
+                    error: null,
+                };
+            }
+
+            return { ...state };
+        }
         default: {
             return state;
         }

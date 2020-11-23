@@ -4,7 +4,7 @@
   <a routerLink="/dashboard" class="menu-link">
     Dashboard
   </a>
-  <div *ngIf="!isLoggedIn">
+  <div *ngIf="!(isLoggedIn$ | async)">
     <a routerLink="/login" class="menu-link">
       Login
     </a>
@@ -12,13 +12,13 @@
       Register
     </a>
   </div>
-  <div *ngIf="isLoggedIn">
+  <div *ngIf="isLoggedIn$ | async">
     <a class="menu-link" (click)="logout()">
       Logout
     </a>
   </div>
   <a routerLink="/cart" class="menu-link">
-    <mat-icon matBadge="{{cart.count}}" matBadgeColor="accent">shopping_cart</mat-icon>
+    <mat-icon matBadge="{{(cart$ | async).count}}" matBadgeColor="accent">shopping_cart</mat-icon>
   </a>
 </mat-toolbar>
 

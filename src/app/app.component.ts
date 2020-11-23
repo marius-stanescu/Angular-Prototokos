@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Cart, CartItem } from './model/cart';
+import { Observable } from 'rxjs';
+import { Cart } from './model/cart';
 import { User } from './model/user';
+import { SmartComponent } from './smart-component';
 import { LoadCart } from './store/cart.actions';
-import { UserService } from './_services/user.service';
+import { LoadUser, Logout } from './store/user.actions';
+import { UserState } from './store/user.reducer';
 
 @Component({
   selector: 'app-root',
@@ -12,30 +14,24 @@ import { UserService } from './_services/user.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent extends SmartComponent {
 
-  public currentUser: User;
-  public cart: Cart;
+  public currentUser$: Observable<User> = this._store.pipe(select(state => state.user.user));
+  public isLoggedIn$: Observable<boolean> = this._store.pipe(select(state => state.user.isAuthenticated));
+  public cart$: Observable<Cart> = this._store.pipe(select(state => state.cart));
 
-  constructor(private store: Store<{ cart: Cart }>,
-    private userService: UserService,
-    private router: Router) {
-    this.currentUser = userService.currentUser;
-    store.pipe(select('cart')).subscribe(data => this.cart = data);
+  constructor(private _store: Store<{ cart: Cart, user: UserState }>) {
+    super();
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadCart());
+    this._store.dispatch(new LoadUser());
+    this._store.dispatch(new LoadCart());
   }
 
   public title = 'Prototokos store';
 
-  get isLoggedIn(): boolean {
-    return this.userService.isLoggedIn;
-  }
-
   public logout() {
-    this.userService.logout();
-    this.router.navigate(['/login']);
+    this._store.dispatch(new Logout());
   }
 }

@@ -11,7 +11,7 @@ export class CartService {
   constructor(private userService: UserService) { }
 
   private get cartKey() {
-    return 'cart-' + this.userService.currentUser?.email;
+    return 'cart-' + this.userService.getCurrentUser()?.email;
   }
 
   public getCart(): Cart {

@@ -91,7 +91,7 @@ Form fields: Email, password, confirm password, name
 
 ✔️ Read up on change detection strategies and optimize your application performance ( https://blog.angular-university.io/how-does-angular-2-change-detection-really-work/ )
 
-❌ Implement NGRX for state management in your application ( https://ngrx.io/ ) and change the cart adding flow / session management / product retrieval to be through ngrx. 
+✔️ Implement NGRX for state management in your application ( https://ngrx.io/ ) and change the cart adding flow / session management / product retrieval to be through ngrx. 
 
 ✔️ Work on styles
 

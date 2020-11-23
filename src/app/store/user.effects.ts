@@ -4,7 +4,8 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { UserService } from '../_services/user.service';
-import { Login, LoginFailure, LoginSuccess, Register, RegisterFailure, RegisterSuccess, UserActionTypes } from './user.actions';
+import { LoadCart, LoadCartSuccess } from './cart.actions';
+import { LoadUser, LoadUserSuccess, Login, LoginFailure, LoginSuccess, Logout, Register, RegisterFailure, RegisterSuccess, UserActionTypes } from './user.actions';
 
 @Injectable()
 export class UserEffects {
@@ -53,16 +54,35 @@ export class UserEffects {
     );
 
 
-    @Effect({ dispatch: false })
+    @Effect()
     loginSuccess$: Observable<any> = this.actions.pipe(
         ofType(UserActionTypes.LoginSuccess),
-        tap(() => {
+        map(() => {
             this.router.navigate(['/dashboard']);
+            return new LoadCart();
         })
     );
 
     @Effect({ dispatch: false })
     loginFailure$: Observable<any> = this.actions.pipe(
         ofType(UserActionTypes.LoginFailure)
+    );
+
+    @Effect()
+    logout$: Observable<any> = this.actions.pipe(
+        ofType(UserActionTypes.Logout),
+        map((action: Logout) => {
+            this.userService.logout();
+            this.router.navigate(['/login']);
+            return new LoadCart();
+        })
+    );
+
+    @Effect()
+    loadUser$: Observable<any> = this.actions.pipe(
+        ofType(UserActionTypes.LoadUser),
+        map((action: LoadUser) => {
+            return new LoadUserSuccess(this.userService.getCurrentUser());
+        })
     );
 }

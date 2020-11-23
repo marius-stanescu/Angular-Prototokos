@@ -9,12 +9,17 @@ export class UserService {
 
   constructor() { }
 
-  public get currentUser(): User {
-    return JSON.parse(localStorage.getItem('currentUser'));
+  public getCurrentUser(): User {
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user) {
+      return new User(user.name, user.email, user.password);
+    }
+    return null;
   }
 
-  public get isLoggedIn(): boolean {
-    return this.currentUser !== undefined && this.currentUser !== null;
+  public isLoggedIn(): boolean {
+    let user = this.getCurrentUser();
+    return user !== undefined && user !== null;
   }
 
   public register(newUser: User): string {

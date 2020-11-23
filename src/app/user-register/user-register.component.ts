@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { SmartComponent } from '../smart-component';
-import { UserService } from '../_services/user.service';
+import { Register } from '../store/user.actions';
+import { UserState } from '../store/user.reducer';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-register',
@@ -13,14 +15,24 @@ import { UserService } from '../_services/user.service';
 export class UserRegisterComponent extends SmartComponent {
 
   public form: any = {};
+  public error$: Observable<string> = this._store.select(state => state.user.error)
 
-  constructor(private userService: UserService,
-    private router: Router) {
+  constructor(private _store: Store<{ user: UserState }>,
+    private _snackBar: MatSnackBar) {
     super();
   }
 
+  ngOnInit() {
+    this.error$.subscribe((error) => {
+      if (error) {
+        this._snackBar.open(error, 'Close', {
+          duration: 5000
+        });
+      }
+    })
+  }
+
   public register(user: User) {
-    this.userService.register(user);
-    this.router.navigate(['/login']);
+    this._store.dispatch(new Register(user));
   }
 }

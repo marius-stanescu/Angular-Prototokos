@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { UserService } from '../_services/user.service';
-import { Register, RegisterFailure, RegisterSuccess, UserActionTypes } from './user.actions';
+import { Login, LoginFailure, LoginSuccess, Register, RegisterFailure, RegisterSuccess, UserActionTypes } from './user.actions';
 
 @Injectable()
 export class UserEffects {
@@ -38,5 +38,31 @@ export class UserEffects {
     @Effect({ dispatch: false })
     registerFailure$: Observable<any> = this.actions.pipe(
         ofType(UserActionTypes.RegisterFailure)
+    );
+
+    @Effect()
+    login$: Observable<any> = this.actions.pipe(
+        ofType(UserActionTypes.Login),
+        map((action: Login) => {
+            const user = this.userService.login(action.credentials);
+            if (user) {
+                return new LoginSuccess(user);
+            }
+            return new LoginFailure('Incorrect email and/or password.');
+        })
+    );
+
+
+    @Effect({ dispatch: false })
+    loginSuccess$: Observable<any> = this.actions.pipe(
+        ofType(UserActionTypes.LoginSuccess),
+        tap(() => {
+            this.router.navigate(['/dashboard']);
+        })
+    );
+
+    @Effect({ dispatch: false })
+    loginFailure$: Observable<any> = this.actions.pipe(
+        ofType(UserActionTypes.LoginFailure)
     );
 }

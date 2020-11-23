@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Credentials } from '../model/credentials';
 import { SmartComponent } from '../smart-component';
-import { UserService } from '../_services/user.service';
+import { Login } from '../store/user.actions';
+import { UserState } from '../store/user.reducer';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-login',
@@ -11,15 +13,22 @@ import { UserService } from '../_services/user.service';
 })
 export class UserLoginComponent extends SmartComponent {
 
-  constructor(private userService: UserService,
-    private router: Router) {
+  constructor(private _store: Store<{ user: UserState }>,
+    private _snackBar: MatSnackBar) {
     super();
   }
 
+  ngOnInit() {
+    this._store.select(state => state.user.error).subscribe((error) => {
+      if (error) {
+        this._snackBar.open(error, 'Close', {
+          duration: 5000
+        });
+      }
+    });
+  }
+
   public login(credentials: Credentials) {
-    if (this.userService.login(credentials)) {
-      this.router.navigate(['/dashboard']);
-    }
-    //TODO: Display an error if no user found with the specified credentials
+    this._store.dispatch(new Login(credentials));
   }
 }

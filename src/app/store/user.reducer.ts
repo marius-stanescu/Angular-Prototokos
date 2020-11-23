@@ -29,6 +29,20 @@ export function UserReducer(state = initialState, action: UserActions): UserStat
                 error: action.error,
             };
         }
+        case UserActionTypes.LoginSuccess: {
+            return {
+                ...state,
+                isAuthenticated: true,
+                user: action.user,
+                error: null,
+            }
+        }
+        case UserActionTypes.LoginFailure: {
+            return {
+                ...state,
+                error: action.error,
+            }
+        }
         default: {
             return state;
         }

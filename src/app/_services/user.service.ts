@@ -34,7 +34,7 @@ export class UserService {
     return '';
   }
 
-  public login(credentials: Credentials): boolean {
+  public login(credentials: Credentials): User {
     let users = [];
     if (localStorage.getItem('users')) {
       users = JSON.parse(localStorage.getItem('users'));
@@ -42,10 +42,10 @@ export class UserService {
     var user = users.filter(u => u.email == credentials.email && u.password == credentials.password)[0];
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
-      return true;
+      return new User(user.name, user.email, user.password);
     }
 
-    return false;
+    return null;
   }
 
   public logout() {

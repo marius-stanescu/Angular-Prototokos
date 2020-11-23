@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { SmartComponent } from '../smart-component';
@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserRegisterComponent extends SmartComponent {
 
   public form: any = {};
-  public error$: Observable<string> = this._store.select(state => state.user.error)
+  public error$: Observable<string> = this._store.pipe(select(state => state.user.error))
 
   constructor(private _store: Store<{ user: UserState }>,
     private _snackBar: MatSnackBar) {

@@ -18,7 +18,7 @@ export class ProductListComponent extends SmartComponent {
   @Input()
   public categoryId: string;
 
-  public products$: Observable<Array<Product>> = this.store.select(state => state.products);
+  public products$: Observable<Array<Product>> = this.store.pipe(select(state => state.products));
 
   constructor(private productService: ProductService,
     private store: Store<{ products: Array<Product> }>) {

@@ -5,7 +5,7 @@ export interface UserState {
     isAuthenticated: boolean,
     user?: User,
     error?: string,
-}
+};
 
 export const initialState: UserState = {
     isAuthenticated: false,
@@ -35,7 +35,7 @@ export function UserReducer(state = initialState, action: UserActions): UserStat
                 isAuthenticated: true,
                 user: action.user,
                 error: null,
-            }
+            };
         }
         case UserActionTypes.LoginFailure: {
             return {

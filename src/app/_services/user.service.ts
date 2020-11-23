@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Credentials } from '../model/credentials';
 import { User } from '../model/user';
 
 @Injectable({
@@ -29,12 +30,12 @@ export class UserService {
     localStorage.setItem('users', JSON.stringify(users));
   }
 
-  public login(email: string, password: string): boolean {
+  public login(credentials: Credentials): boolean {
     let users = [];
     if (localStorage.getItem('users')) {
       users = JSON.parse(localStorage.getItem('users'));
     }
-    var user = users.filter(u => u.email == email && u.password == password)[0];
+    var user = users.filter(u => u.email == credentials.email && u.password == credentials.password)[0];
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
       return true;

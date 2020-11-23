@@ -30,13 +30,15 @@ import { CartReducer } from './store/cart.reducer';
 import { CartEffects } from './store/cart.effects';
 import { ProductReducer } from './store/product.reducer';
 import { ProductEffects } from './store/product.effects';
+import { LoginFormComponent } from './user-login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegisterComponent,
     MustMatchDirective,
-    UserLoginComponent
+    UserLoginComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,

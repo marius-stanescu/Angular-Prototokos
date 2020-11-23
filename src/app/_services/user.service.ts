@@ -17,17 +17,21 @@ export class UserService {
     return this.currentUser !== undefined && this.currentUser !== null;
   }
 
-  public register(user: User) {
+  public register(newUser: User): string {
     let users = []
     if (localStorage.getItem('users')) {
       users = JSON.parse(localStorage.getItem('users'));
-      users = [...users, user];
-      //TODO: Check if there's already an existing user with the same email address
+      if (users.filter(user => user.email == newUser.email).length) {
+        return `Already existing email address ${newUser.email}.`;
+      }
+      users = [...users, newUser];
     } else {
-      users = [user];
+      users = [newUser];
     }
 
     localStorage.setItem('users', JSON.stringify(users));
+
+    return '';
   }
 
   public login(credentials: Credentials): boolean {
